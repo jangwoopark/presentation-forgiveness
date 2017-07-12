@@ -1,0 +1,26 @@
+text { caption = "$dol"; } $dollar;
+
+array { LOOP $i $k; $t = '$i+1'; box {height = '440/$k-2'; width = 140; color = 0,0,0;} "$red10$t"; ENDLOOP; } $rex;
+
+picture { text cross; x=0; y=0;
+		LOOP $i $k; $t='$i+1'; 
+		box "$red10$t"; x=0; y='-220+(440/(2*$k))+$i*440/$k';
+		ENDLOOP;
+		LOOP $i '$k+1';
+		box divide; x=68; y='220-$i*(440/$k)';
+		box divide; x=-68; y='220-$i*(440/$k)';
+		ENDLOOP;
+		text select; x = -250; y = 0;
+		text $dollar; x = -250; y = -100;
+		text sending; x = 250; y = 23;
+		text dollar_2; x = 400; y = 23;
+		text keeping; x = 250; y = -23;
+		text dollar_3; x = 400; y = -23;
+		box zero; x=0; y=-242;
+		box vert; x=70; y=-22; 
+		box vert; x=-70; y=-22; 
+		box horiz; x=0; y=220; 
+		box horiz; x=0; y=-264;
+		} $cursor;
+
+trial { stimulus_event {picture $cursor;} $coding;  } $codes;
