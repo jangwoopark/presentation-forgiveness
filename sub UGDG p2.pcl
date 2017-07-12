@@ -1,0 +1,132 @@
+sub UG (int p1dur)
+begin stick.set_xy(0,-264); 
+	loop int end_time = clock.time()  + p1dur
+   until clock.time() >= end_time
+	begin
+	stick.poll();
+	acknow.set_part_x( 1, stick.x() ); 
+	acknow.set_part_y( 1, stick.y() );
+		if (stick.y()==-264) then zero.set_color(0,0,0); red1.set_color(0,0,0);
+			acknowl.set_event_code("_"); 
+			ac10.set_caption("_"); ac10.redraw();
+		end; 
+		if (stick.y()>-264) then zero.set_color(0,255,0);
+			acknowl.set_event_code("accept"); 
+			ac10.set_caption("Accepted"); ac10.redraw();
+		elseif (stick.y()<-264) then zero.set_color(0,0,0); 
+		end;
+		if (stick.y()>-220) then red1.set_color(255,0,0);
+			acknowl.set_event_code("reject"); 
+			ac10.set_caption("Rejected"); ac10.redraw();
+		elseif (stick.y()<-220) then red1.set_color(0,0,0);
+		end; 
+		acknowledge.present();
+	end;
+end;
+
+#this is DG P2 receiving the amount
+
+sub UGsent (int duration)
+begin 
+	loop int end_time = clock.time()  + duration
+   until clock.time() >= end_time
+	begin
+		double b = random();
+		if (b>  0.0) && (b<=0.2) then 
+			selling.set_caption("$0");selling.redraw(); personsent.set_event_code("person sent $0");
+			Sentperson.present(); UG(10000); end;
+		if (b>0.2) && (b<=0.4) then 
+			selling.set_caption("$1");selling.redraw(); personsent.set_event_code("person sent $1");
+			Sentperson.present(); UG(10000); end;
+		if (b>0.4) && (b<=0.6) then 
+			selling.set_caption("$2");selling.redraw(); personsent.set_event_code("person sent $2");
+			Sentperson.present(); UG(10000); end;
+		if (b>0.6) && (b<=0.8) then 
+			selling.set_caption("$3");selling.redraw(); personsent.set_event_code("person sent $3");
+			Sentperson.present(); UG(10000); end;
+#		if (b>0.8) && (b<=0.8) then 
+#			selling.set_caption("$4");selling.redraw(); personsent.set_event_code("person sent $4");
+#			Sentperson.present(); UG(10000); end;
+#		if (b>0.8) && (b<=0.8) then 
+#			selling.set_caption("$5");selling.redraw(); personsent.set_event_code("person sent $5");
+#			Sentperson.present(); UG(10000); end;
+#		if (b>0.8) && (b<=0.8) then 
+#			selling.set_caption("$6");selling.redraw(); personsent.set_event_code("person sent $6");
+#			Sentperson.present(); UG(10000); end;
+		if (b>0.8) && (b<=0.9) then 
+			selling.set_caption("$7");selling.redraw(); personsent.set_event_code("person sent $7");
+			Sentperson.present(); UG(10000); end;
+		if (b>0.9) && (b<=0.999) then 
+			selling.set_caption("$8");selling.redraw(); personsent.set_event_code("person sent $8");
+			Sentperson.present(); UG(10000); end;
+#		if (b>0.999) && (b<=0.999) then 
+#			selling.set_caption("$9");selling.redraw(); personsent.set_event_code("person sent $9");
+#			Sentperson.present(); UG(10000); end;
+#		if (b>0.999) && (b<=0.999) then 
+#			selling.set_caption("$10");selling.redraw(); personsent.set_event_code("person sent $10");
+#			Sentperson.present(); UG(10000); end;
+	end;
+end;
+
+sub DG (int p1dur)
+begin stick.set_xy(0,-264); 
+	loop int end_time = clock.time()  + p1dur
+   until clock.time() >= end_time
+	begin
+	stick.poll();
+	acknowdg.set_part_x( 1, stick.x() ); 
+	acknowdg.set_part_y( 1, stick.y() );
+		if (stick.y()==-264) then zero.set_color(0,0,0); red1.set_color(0,0,0);
+			acknowldg.set_event_code("_"); 
+			ac10.set_caption("_"); ac10.redraw();
+		elseif (stick.y()>-264) then zero.set_color(0,255,0); red1.set_color(255,0,0);
+			acknowldg.set_event_code("acknowledged"); 
+			ac10.set_caption("Acknowledged"); ac10.redraw();
+		end;
+		acknowledgedg.present();
+	end;
+end;
+
+#this is DG P2 receiving the amount
+
+sub DGsent (int duration)
+begin 
+	loop int end_time = clock.time()  + duration
+   until clock.time() >= end_time
+	begin
+		double b = random();
+		if (b>  0.0) && (b<=0.16) then 
+			selling.set_caption("$0");selling.redraw(); personsent.set_event_code("person sent $0");
+			Sentperson.present(); DG(10000); end;
+		if (b>0.16) && (b<=0.32) then 
+			selling.set_caption("$1");selling.redraw(); personsent.set_event_code("person sent $1");
+			Sentperson.present(); DG(10000); end;
+		if (b>0.32) && (b<=0.48) then 
+			selling.set_caption("$2");selling.redraw(); personsent.set_event_code("person sent $2");
+			Sentperson.present(); DG(10000); end;
+		if (b>0.48) && (b<=0.64) then 
+			selling.set_caption("$3");selling.redraw(); personsent.set_event_code("person sent $3");
+			Sentperson.present(); DG(10000); end;
+		if (b>0.64) && (b<=0.80) then 
+			selling.set_caption("$4");selling.redraw(); personsent.set_event_code("person sent $4");
+			Sentperson.present(); DG(10000); end;
+#		if (b>0.8) && (b<=0.8) then 
+#			selling.set_caption("$5");selling.redraw(); personsent.set_event_code("person sent $5");
+#			Sentperson.present(); DG(10000); end;
+#		if (b>0.8) && (b<=0.8) then 
+#			selling.set_caption("$6");selling.redraw(); personsent.set_event_code("person sent $6");
+#			Sentperson.present(); DG(10000); end;
+		if (b>0.8) && (b<=0.9) then 
+			selling.set_caption("$7");selling.redraw(); personsent.set_event_code("person sent $7");
+			Sentperson.present(); DG(10000); end;
+		if (b>0.9) && (b<=0.999) then 
+			selling.set_caption("$8");selling.redraw(); personsent.set_event_code("person sent $8");
+			Sentperson.present(); DG(10000); end;
+#		if (b>0.999) && (b<=0.999) then 
+#			selling.set_caption("$9");selling.redraw(); personsent.set_event_code("person sent $9");
+#			Sentperson.present(); DG(10000); end;
+#		if (b>0.999) && (b<=0.999) then 
+#			selling.set_caption("$10");selling.redraw(); personsent.set_event_code("person sent $10");
+#			Sentperson.present(); DG(10000); end;
+	end;
+end;

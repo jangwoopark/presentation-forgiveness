@@ -1,0 +1,713 @@
+mouse stick = response_manager.get_mouse( 1 );
+#joystick stick = response_manager.get_joystick( 1 ); 
+stick.set_min_max( 1, -1, 1 );
+stick.set_min_max( 2, -264, 220 );
+#stick.set_saturation( 1, 0.999 );
+#stick.set_saturation( 2, 0.999 );
+#stick.set_dead_zone( 1, 0.001 ); 
+#stick.set_dead_zone( 2, 0.001 );
+
+sub DG (int p1dur)
+begin stick.set_xy(0,-264); 
+	loop int end_time = clock.time()  + p1dur
+   until clock.time() >= end_time
+	begin
+	stick.poll();
+	dgcur.set_part_x( 1, stick.x() ); 
+	dgcur.set_part_y( 1, stick.y() );
+		if (stick.y()==-264) then zero.set_color(0,0,0); dgred10_10_1.set_color(0,0,0); dgred10_10_2.set_color(0,0,0);
+			dollar_2.set_caption("_"); dollar_2.redraw(); 
+			dollar_3.set_caption("_"); dollar_3.redraw();
+			dgcod.set_event_code("_"); 
+		end;
+		if (stick.y()>-264) 
+		then zero.set_color(0,255,0); dgred10_10_1.set_color(255,0,0); dgred10_10_2.set_color(255,0,0);
+			dollar_2.set_caption("$2"); dollar_2.redraw(); 
+			dollar_3.set_caption("$8"); dollar_3.redraw();
+			dgcod.set_event_code("2"); 
+		elseif (stick.y()<-264) then zero.set_color(0,0,0); dgred10_10_1.set_color(0,0,0); dgred10_10_2.set_color(0,0,0);
+		end;
+		if (stick.y()>-132) 
+		then dgred10_10_3.set_color(255,0,0); dgred10_10_4.set_color(255,0,0); dgred10_10_5.set_color(255,0,0);
+		dgred10_10_6.set_color(255,0,0); dgred10_10_7.set_color(255,0,0); dgred10_10_8.set_color(255,0,0); 
+		dgred10_10_9.set_color(255,0,0);
+			dollar_2.set_caption("$9"); dollar_2.redraw(); 
+			dollar_3.set_caption("$1"); dollar_3.redraw();
+			dgcod.set_event_code("9"); 
+		elseif (stick.y()<-132) then dgred10_10_3.set_color(0,0,0); dgred10_10_4.set_color(0,0,0); dgred10_10_5.set_color(0,0,0);
+		dgred10_10_6.set_color(0,0,0); dgred10_10_7.set_color(0,0,0); dgred10_10_8.set_color(0,0,0); 
+		dgred10_10_9.set_color(0,0,0);
+		end;
+		dollar_10.set_caption(" "); dollar_10.redraw();
+		dgcoding.present();
+	end;
+end;
+
+#the Trust Game
+
+#game 1
+
+sub ret101 
+	begin double b = random(); 
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $0 and Player 2 returned $0"); end;
+	end;
+sub ret131 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.25) then coding10.set_event_code("In the last round, you sent $1 and Player 2 returned $0"); end;
+		if (b> 0.25) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $1 and Player 2 returned $1"); end;
+		if (b> 0.5) && (b<=0.75) then coding10.set_event_code("In the last round, you sent $1 and Player 2 returned $2"); end;
+		if (b> 0.75) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $1 and Player 2 returned $13"); end;
+	end;
+sub ret161 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $1"); end;
+		if (b> 0.33) && (b<=0.66) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $2"); end;
+		if (b> 0.66) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $4"); end;
+	end;
+sub ret191 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.14) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $2"); end;
+		if (b> 0.14) && (b<=0.28) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $3"); end;
+		if (b> 0.28) && (b<=0.42) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $5"); end;
+		if (b> 0.42) && (b<=0.57) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $6"); end;
+		if (b> 0.57) && (b<=0.71) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $10"); end;
+		if (b> 0.71) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $19"); end;
+	end;
+sub ret221 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.25) then coding10.set_event_code("In the last round, you sent $4 and Player 2 returned $3"); end;
+		if (b> 0.25) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $4 and Player 2 returned $4"); end;
+		if (b> 0.5) && (b<=0.75) then coding10.set_event_code("In the last round, you sent $4 and Player 2 returned $6"); end;
+		if (b> 0.75) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $4 and Player 2 returned $8"); end;
+	end;
+sub ret251 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.11) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $3"); end;
+		if (b> 0.11) && (b<=0.22) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $5"); end;
+		if (b> 0.22) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $6"); end;
+		if (b> 0.33) && (b<=0.77) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $8"); end;
+		if (b> 0.77) && (b<=0.88) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $10"); end;
+		if (b> 0.88) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $14"); end;
+	end;
+sub ret281 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $6 and Player 2 returned $10"); end;
+	end;
+sub ret311 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $7 and Player 2 returned $14"); end;
+	end;
+sub ret341 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $8 and Player 2 returned $16"); end;
+		if (b> 0.33) && (b<=0.66) then coding10.set_event_code("In the last round, you sent $8 and Player 2 returned $17"); end;
+		if (b> 0.66) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $8 and Player 2 returned $18"); end;
+	end;
+sub ret371 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $9 and Player 2 returned $36"); end;
+	end;
+sub ret401 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.25) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $10"); end;
+		if (b> 0.25) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $15"); end;
+		if (b> 0.5) && (b<=0.87) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $20"); end;
+		if (b> 0.87) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $23"); end;
+	end;
+
+sub TG1 (int p1dur)
+begin stick.set_xy(0,-264); 
+	loop int end_time = clock.time()  + p1dur
+   until clock.time() >= end_time
+	begin
+	array <int> seq10[10] = {-220, -176, -132, -88, -44, 0, 44, 88, 132, 176};
+	array <string> num[10] = {"$1","$2","$3","$4","$5","$6","$7","$8","$9","$10"};
+	array <string> mun[10] = {"$9","$8","$7","$6","$5","$4","$3","$2","$1","$0"};
+	stick.poll();
+	cursor10.set_part_x( 1, stick.x() ); 
+	cursor10.set_part_y( 1, stick.y() );
+		if (stick.y()==-264) then zero.set_color(0,0,0); 
+			dollar_2.set_caption("_"); dollar_2.redraw(); 
+			dollar_3.set_caption("_"); dollar_3.redraw();
+			coding10.set_event_code("_"); 
+		end;
+		if (stick.y()>-264) 
+		then zero.set_color(0,255,0); 
+			dollar_2.set_caption("$0"); dollar_2.redraw(); 
+			dollar_3.set_caption("$10"); dollar_3.redraw();
+			ret101(); 
+		elseif (stick.y()<-264) then zero.set_color(0,0,0); 
+		end;
+		if (stick.y()>seq10[1]) 
+		then red10_10_1.set_color(255,0,0); 
+			dollar_2.set_caption("$1"); dollar_2.redraw(); 
+			dollar_3.set_caption("$9"); dollar_3.redraw();
+			ret131(); 
+		elseif (stick.y()<seq10[1]) then red10_10_1.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[2]) 
+		then red10_10_2.set_color(255,0,0); 
+			dollar_2.set_caption("$2"); dollar_2.redraw(); 
+			dollar_3.set_caption("$8"); dollar_3.redraw();
+			ret161(); 
+		elseif (stick.y()<seq10[2]) then red10_10_2.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[3])  
+		then red10_10_3.set_color(255,0,0); 
+			dollar_2.set_caption("$3"); dollar_2.redraw(); 
+			dollar_3.set_caption("$7"); dollar_3.redraw();
+			ret191(); 
+		elseif (stick.y()<seq10[3]) then red10_10_3.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[4])  
+		then red10_10_4.set_color(255,0,0); 
+			dollar_2.set_caption("$4"); dollar_2.redraw(); 
+			dollar_3.set_caption("$6"); dollar_3.redraw();
+			ret221(); 
+		elseif (stick.y()<seq10[4]) then red10_10_4.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[5])  
+		then red10_10_5.set_color(255,0,0); 
+			dollar_2.set_caption("$5"); dollar_2.redraw(); 
+			dollar_3.set_caption("$5"); dollar_3.redraw();
+			ret251(); 
+		elseif (stick.y()<seq10[5]) then red10_10_5.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[6])  
+		then red10_10_6.set_color(255,0,0); 
+			dollar_2.set_caption("$6"); dollar_2.redraw(); 
+			dollar_3.set_caption("$4"); dollar_3.redraw();
+			ret281(); 
+		elseif (stick.y()<seq10[6]) then red10_10_6.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[7])  
+		then red10_10_7.set_color(255,0,0); 
+			dollar_2.set_caption("$7"); dollar_2.redraw(); 
+			dollar_3.set_caption("$3"); dollar_3.redraw();
+			ret311(); 
+		elseif (stick.y()<seq10[7]) then red10_10_7.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[8])  
+		then red10_10_8.set_color(255,0,0); 
+			dollar_2.set_caption("$8"); dollar_2.redraw(); 
+			dollar_3.set_caption("$2"); dollar_3.redraw();
+			ret341(); 
+		elseif (stick.y()<seq10[8]) then red10_10_8.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[9])  
+		then red10_10_9.set_color(255,0,0); 
+			dollar_2.set_caption("$9"); dollar_2.redraw(); 
+			dollar_3.set_caption("$1"); dollar_3.redraw();
+			ret371(); 
+		elseif (stick.y()<seq10[9]) then red10_10_9.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[10])  
+		then red10_10_10.set_color(255,0,0); 
+			dollar_2.set_caption("$10"); dollar_2.redraw(); 
+			dollar_3.set_caption("$0"); dollar_3.redraw();
+			ret401(); 
+		elseif (stick.y()<seq10[10]) then red10_10_10.set_color(0,0,0);
+		end;
+		dollar_10.set_caption("$10"); dollar_10.redraw();
+		codes10.present();
+	end;
+end;
+
+#game 2
+
+sub ret102 
+	begin double b = random(); 
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $0 and Player 2 returned $5"); end;
+	end;
+sub ret132 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $1 and Player 2 returned $0"); end;
+	end;
+sub ret162 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.25) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $1"); end;
+		if (b> 0.25) && (b<=0.50) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $2"); end;
+		if (b> 0.50) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $3"); end;
+	end;
+sub ret192 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $3"); end;
+	end;
+sub ret222 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.66) then coding10.set_event_code("In the last round, you sent $4 and Player 2 returned $6"); end;
+		if (b> 0.66) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $4 and Player 2 returned $11"); end;
+	end;
+sub ret252 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $10"); end;
+		if (b> 0.5) && (b<=0.75) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $12"); end;
+		if (b> 0.75) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $25"); end;
+	end;
+sub ret282 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.66) then coding10.set_event_code("In the last round, you sent $6 and Player 2 returned $7"); end;
+		if (b> 0.66) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $6 and Player 2 returned $9"); end;
+	end;
+sub ret312 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $7 and Player 2 returned $11"); end;
+		if (b> 0.5) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $7 and Player 2 returned $25"); end;
+	end;
+sub ret342 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $8 and Player 2 returned $10"); end;
+		if (b> 0.33) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $8 and Player 2 returned $14"); end;
+	end;
+sub ret372 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $9 and Player 2 returned $16"); end;
+	end;
+sub ret402 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.06) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $0"); end;
+		if (b> 0.06) && (b<=0.12) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $10"); end;
+		if (b> 0.12) && (b<=0.18) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $13"); end;
+		if (b> 0.18) && (b<=0.43) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $15"); end;
+		if (b> 0.43) && (b<=0.50) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $16"); end;
+		if (b> 0.50) && (b<=0.81) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $20"); end;
+		if (b> 0.81) && (b<=0.87) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $22"); end;
+		if (b> 0.87) && (b<=0.93) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $23"); end;
+		if (b> 0.93) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $39"); end;
+	end;
+
+sub TG2 (int p1dur)
+begin stick.set_xy(0,-264); 
+	loop int end_time = clock.time()  + p1dur
+   until clock.time() >= end_time
+	begin
+	array <int> seq10[10] = {-220, -176, -132, -88, -44, 0, 44, 88, 132, 176};
+	array <string> num[10] = {"$1","$2","$3","$4","$5","$6","$7","$8","$9","$10"};
+	array <string> mun[10] = {"$9","$8","$7","$6","$5","$4","$3","$2","$1","$0"};
+	stick.poll();
+	cursor10.set_part_x( 1, stick.x() ); 
+	cursor10.set_part_y( 1, stick.y() );
+		if (stick.y()==-264) then zero.set_color(0,0,0); 
+			dollar_2.set_caption("_"); dollar_2.redraw(); 
+			dollar_3.set_caption("_"); dollar_3.redraw();
+			coding10.set_event_code("_"); 
+		end;
+		if (stick.y()>-264) 
+		then zero.set_color(0,255,0); 
+			dollar_2.set_caption("$0"); dollar_2.redraw(); 
+			dollar_3.set_caption("$10"); dollar_3.redraw();
+			ret102(); 
+		elseif (stick.y()<-264) then zero.set_color(0,0,0); 
+		end;
+		if (stick.y()>seq10[1]) 
+		then red10_10_1.set_color(255,0,0); 
+			dollar_2.set_caption("$1"); dollar_2.redraw(); 
+			dollar_3.set_caption("$9"); dollar_3.redraw();
+			ret132(); 
+		elseif (stick.y()<seq10[1]) then red10_10_1.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[2]) 
+		then red10_10_2.set_color(255,0,0); 
+			dollar_2.set_caption("$2"); dollar_2.redraw(); 
+			dollar_3.set_caption("$8"); dollar_3.redraw();
+			ret162(); 
+		elseif (stick.y()<seq10[2]) then red10_10_2.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[3])  
+		then red10_10_3.set_color(255,0,0); 
+			dollar_2.set_caption("$3"); dollar_2.redraw(); 
+			dollar_3.set_caption("$7"); dollar_3.redraw();
+			ret192(); 
+		elseif (stick.y()<seq10[3]) then red10_10_3.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[4])  
+		then red10_10_4.set_color(255,0,0); 
+			dollar_2.set_caption("$4"); dollar_2.redraw(); 
+			dollar_3.set_caption("$6"); dollar_3.redraw();
+			ret222(); 
+		elseif (stick.y()<seq10[4]) then red10_10_4.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[5])  
+		then red10_10_5.set_color(255,0,0); 
+			dollar_2.set_caption("$5"); dollar_2.redraw(); 
+			dollar_3.set_caption("$5"); dollar_3.redraw();
+			ret252(); 
+		elseif (stick.y()<seq10[5]) then red10_10_5.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[6])  
+		then red10_10_6.set_color(255,0,0); 
+			dollar_2.set_caption("$6"); dollar_2.redraw(); 
+			dollar_3.set_caption("$4"); dollar_3.redraw();
+			ret282(); 
+		elseif (stick.y()<seq10[6]) then red10_10_6.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[7])  
+		then red10_10_7.set_color(255,0,0); 
+			dollar_2.set_caption("$7"); dollar_2.redraw(); 
+			dollar_3.set_caption("$3"); dollar_3.redraw();
+			ret312(); 
+		elseif (stick.y()<seq10[7]) then red10_10_7.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[8])  
+		then red10_10_8.set_color(255,0,0); 
+			dollar_2.set_caption("$8"); dollar_2.redraw(); 
+			dollar_3.set_caption("$2"); dollar_3.redraw();
+			ret342(); 
+		elseif (stick.y()<seq10[8]) then red10_10_8.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[9])  
+		then red10_10_9.set_color(255,0,0); 
+			dollar_2.set_caption("$9"); dollar_2.redraw(); 
+			dollar_3.set_caption("$1"); dollar_3.redraw();
+			ret372(); 
+		elseif (stick.y()<seq10[9]) then red10_10_9.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[10])  
+		then red10_10_10.set_color(255,0,0); 
+			dollar_2.set_caption("$10"); dollar_2.redraw(); 
+			dollar_3.set_caption("$0"); dollar_3.redraw();
+			ret402(); 
+		elseif (stick.y()<seq10[10]) then red10_10_10.set_color(0,0,0);
+		end;
+		dollar_10.set_caption("$10"); dollar_10.redraw();
+		codes10.present();
+	end;
+end;
+
+#game 3
+
+sub ret103 
+	begin double b = random(); 
+		if (b> 0.0) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $0 and Player 2 returned $0"); end;
+		if (b> 0.5) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $0 and Player 2 returned $5"); end;
+	end;
+sub ret133 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.66) then coding10.set_event_code("In the last round, you sent $1 and Player 2 returned $1"); end;
+		if (b> 0.66) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $1 and Player 2 returned $2"); end;
+	end;
+sub ret163 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $2"); end;
+		if (b> 0.33) && (b<=0.66) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $3"); end;
+		if (b> 0.66) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $7"); end;
+	end;
+sub ret193 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.25) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $2"); end;
+		if (b> 0.25) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $4"); end;
+		if (b> 0.5) && (b<=0.75) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $5"); end;
+		if (b> 0.75) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $6"); end;
+	end;
+sub ret223 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $4 and Player 2 returned $8"); end;
+	end;
+sub ret253 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $0"); end;
+		if (b> 0.33) && (b<=0.66) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $5"); end;
+		if (b> 0.66) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $6"); end;
+	end;
+sub ret283 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $6 and Player 2 returned $7"); end;
+		if (b> 0.33) && (b<=0.66) then coding10.set_event_code("In the last round, you sent $6 and Player 2 returned $9"); end;
+		if (b> 0.66) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $6 and Player 2 returned $28"); end;
+	end;
+sub ret313 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $7 and Player 2 returned $6"); end;
+	end;
+sub ret343 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $8 and Player 2 returned $12"); end;
+		if (b> 0.5) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $8 and Player 2 returned $15"); end;
+	end;
+sub ret373 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $9 and Player 2 returned $13"); end;
+		if (b> 0.33) && (b<=0.66) then coding10.set_event_code("In the last round, you sent $9 and Player 2 returned $18"); end;
+		if (b> 0.66) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $9 and Player 2 returned $20"); end;
+	end;
+sub ret403 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.06) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $0"); end;
+		if (b> 0.06) && (b<=0.12) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $10"); end;
+		if (b> 0.12) && (b<=0.18) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $11"); end;
+		if (b> 0.18) && (b<=0.31) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $15"); end;
+		if (b> 0.31) && (b<=0.75) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $20"); end;
+		if (b> 0.75) && (b<=0.81) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $21"); end;
+		if (b> 0.81) && (b<=0.87) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $30"); end;
+		if (b> 0.87) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $40"); end;
+	end;
+
+sub TG3 (int p1dur)
+begin stick.set_xy(0,-264); 
+	loop int end_time = clock.time()  + p1dur
+   until clock.time() >= end_time
+	begin
+	array <int> seq10[10] = {-220, -176, -132, -88, -44, 0, 44, 88, 132, 176};
+	array <string> num[10] = {"$1","$2","$3","$4","$5","$6","$7","$8","$9","$10"};
+	array <string> mun[10] = {"$9","$8","$7","$6","$5","$4","$3","$2","$1","$0"};
+	stick.poll();
+	cursor10.set_part_x( 1, stick.x() ); 
+	cursor10.set_part_y( 1, stick.y() );
+		if (stick.y()==-264) then zero.set_color(0,0,0); 
+			dollar_2.set_caption("_"); dollar_2.redraw(); 
+			dollar_3.set_caption("_"); dollar_3.redraw();
+			coding10.set_event_code("_"); 
+		end;
+		if (stick.y()>-264) 
+		then zero.set_color(0,255,0); 
+			dollar_2.set_caption("$0"); dollar_2.redraw(); 
+			dollar_3.set_caption("$10"); dollar_3.redraw();
+			ret103(); 
+		elseif (stick.y()<-264) then zero.set_color(0,0,0); 
+		end;
+		if (stick.y()>seq10[1]) 
+		then red10_10_1.set_color(255,0,0); 
+			dollar_2.set_caption("$1"); dollar_2.redraw(); 
+			dollar_3.set_caption("$9"); dollar_3.redraw();
+			ret133(); 
+		elseif (stick.y()<seq10[1]) then red10_10_1.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[2]) 
+		then red10_10_2.set_color(255,0,0); 
+			dollar_2.set_caption("$2"); dollar_2.redraw(); 
+			dollar_3.set_caption("$8"); dollar_3.redraw();
+			ret163(); 
+		elseif (stick.y()<seq10[2]) then red10_10_2.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[3])  
+		then red10_10_3.set_color(255,0,0); 
+			dollar_2.set_caption("$3"); dollar_2.redraw(); 
+			dollar_3.set_caption("$7"); dollar_3.redraw();
+			ret193(); 
+		elseif (stick.y()<seq10[3]) then red10_10_3.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[4])  
+		then red10_10_4.set_color(255,0,0); 
+			dollar_2.set_caption("$4"); dollar_2.redraw(); 
+			dollar_3.set_caption("$6"); dollar_3.redraw();
+			ret223(); 
+		elseif (stick.y()<seq10[4]) then red10_10_4.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[5])  
+		then red10_10_5.set_color(255,0,0); 
+			dollar_2.set_caption("$5"); dollar_2.redraw(); 
+			dollar_3.set_caption("$5"); dollar_3.redraw();
+			ret253(); 
+		elseif (stick.y()<seq10[5]) then red10_10_5.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[6])  
+		then red10_10_6.set_color(255,0,0); 
+			dollar_2.set_caption("$6"); dollar_2.redraw(); 
+			dollar_3.set_caption("$4"); dollar_3.redraw();
+			ret283(); 
+		elseif (stick.y()<seq10[6]) then red10_10_6.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[7])  
+		then red10_10_7.set_color(255,0,0); 
+			dollar_2.set_caption("$7"); dollar_2.redraw(); 
+			dollar_3.set_caption("$3"); dollar_3.redraw();
+			ret313(); 
+		elseif (stick.y()<seq10[7]) then red10_10_7.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[8])  
+		then red10_10_8.set_color(255,0,0); 
+			dollar_2.set_caption("$8"); dollar_2.redraw(); 
+			dollar_3.set_caption("$2"); dollar_3.redraw();
+			ret343(); 
+		elseif (stick.y()<seq10[8]) then red10_10_8.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[9])  
+		then red10_10_9.set_color(255,0,0); 
+			dollar_2.set_caption("$9"); dollar_2.redraw(); 
+			dollar_3.set_caption("$1"); dollar_3.redraw();
+			ret373(); 
+		elseif (stick.y()<seq10[9]) then red10_10_9.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[10])  
+		then red10_10_10.set_color(255,0,0); 
+			dollar_2.set_caption("$10"); dollar_2.redraw(); 
+			dollar_3.set_caption("$0"); dollar_3.redraw();
+			ret403(); 
+		elseif (stick.y()<seq10[10]) then red10_10_10.set_color(0,0,0);
+		end;
+		dollar_10.set_caption("$10"); dollar_10.redraw();
+		codes10.present();
+	end;
+end;
+
+#game 4
+
+sub ret104 
+	begin double b = random(); 
+		if (b> 0.0) && (b<=0.77) then coding10.set_event_code("In the last round, you sent $0 and Player 2 returned $0"); end;
+		if (b> 0.77) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $0 and Player 2 returned $1"); end;
+	end;
+sub ret134 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $1 and Player 2 returned $0"); end;
+		if (b> 0.33) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $1 and Player 2 returned $1"); end;
+	end;
+sub ret164 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.33) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $1"); end;
+		if (b> 0.33) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $2 and Player 2 returned $3"); end;
+	end;
+sub ret194 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $3 and Player 2 returned $8"); end;
+	end;
+sub ret224 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $4 and Player 2 returned $0"); end;
+	end;
+sub ret254 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $12"); end;
+		if (b> 0.5) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $5 and Player 2 returned $15"); end;
+	end;
+sub ret284 
+	begin double b = random();
+		if (b> 0.0) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $6 and Player 2 returned $11"); end;
+	end;
+sub ret314 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.25) then coding10.set_event_code("In the last round, you sent $7 and Player 2 returned $0"); end;
+		if (b> 0.25) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $7 and Player 2 returned $7"); end;
+		if (b> 0.5) && (b<=0.75) then coding10.set_event_code("In the last round, you sent $7 and Player 2 returned $11"); end;
+		if (b> 0.75) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $7 and Player 2 returned $15"); end;
+	end;
+sub ret344 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $8 and Player 2 returned $2"); end;
+		if (b> 0.5) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $8 and Player 2 returned $9"); end;
+	end;
+sub ret374 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.5) then coding10.set_event_code("In the last round, you sent $9 and Player 2 returned $10"); end;
+		if (b> 0.5) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $9 and Player 2 returned $33"); end;
+	end;
+sub ret404 
+	begin double b = random();
+		if (b> 0.0) && (b<=0.07) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $8"); end;
+		if (b> 0.07) && (b<=0.21) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $10"); end;
+		if (b> 0.21) && (b<=0.28) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $11"); end;
+		if (b> 0.28) && (b<=0.92) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $20"); end;
+		if (b> 0.92) && (b<=1.0) then coding10.set_event_code("In the last round, you sent $10 and Player 2 returned $30"); end;
+	end;
+
+sub TG4 (int p1dur)
+begin stick.set_xy(0,-264); 
+	loop int end_time = clock.time()  + p1dur
+   until clock.time() >= end_time
+	begin
+	array <int> seq10[10] = {-220, -176, -132, -88, -44, 0, 44, 88, 132, 176};
+	array <string> num[10] = {"$1","$2","$3","$4","$5","$6","$7","$8","$9","$10"};
+	array <string> mun[10] = {"$9","$8","$7","$6","$5","$4","$3","$2","$1","$0"};
+	stick.poll();
+	cursor10.set_part_x( 1, stick.x() ); 
+	cursor10.set_part_y( 1, stick.y() );
+		if (stick.y()==-264) then zero.set_color(0,0,0); 
+			dollar_2.set_caption("_"); dollar_2.redraw(); 
+			dollar_3.set_caption("_"); dollar_3.redraw();
+			coding10.set_event_code("_"); 
+		end;
+		if (stick.y()>-264) 
+		then zero.set_color(0,255,0); 
+			dollar_2.set_caption("$0"); dollar_2.redraw(); 
+			dollar_3.set_caption("$10"); dollar_3.redraw();
+			ret104(); 
+		elseif (stick.y()<-264) then zero.set_color(0,0,0); 
+		end;
+		if (stick.y()>seq10[1]) 
+		then red10_10_1.set_color(255,0,0); 
+			dollar_2.set_caption("$1"); dollar_2.redraw(); 
+			dollar_3.set_caption("$9"); dollar_3.redraw();
+			ret134(); 
+		elseif (stick.y()<seq10[1]) then red10_10_1.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[2]) 
+		then red10_10_2.set_color(255,0,0); 
+			dollar_2.set_caption("$2"); dollar_2.redraw(); 
+			dollar_3.set_caption("$8"); dollar_3.redraw();
+			ret164(); 
+		elseif (stick.y()<seq10[2]) then red10_10_2.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[3])  
+		then red10_10_3.set_color(255,0,0); 
+			dollar_2.set_caption("$3"); dollar_2.redraw(); 
+			dollar_3.set_caption("$7"); dollar_3.redraw();
+			ret194(); 
+		elseif (stick.y()<seq10[3]) then red10_10_3.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[4])  
+		then red10_10_4.set_color(255,0,0); 
+			dollar_2.set_caption("$4"); dollar_2.redraw(); 
+			dollar_3.set_caption("$6"); dollar_3.redraw();
+			ret224(); 
+		elseif (stick.y()<seq10[4]) then red10_10_4.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[5])  
+		then red10_10_5.set_color(255,0,0); 
+			dollar_2.set_caption("$5"); dollar_2.redraw(); 
+			dollar_3.set_caption("$5"); dollar_3.redraw();
+			ret254(); 
+		elseif (stick.y()<seq10[5]) then red10_10_5.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[6])  
+		then red10_10_6.set_color(255,0,0); 
+			dollar_2.set_caption("$6"); dollar_2.redraw(); 
+			dollar_3.set_caption("$4"); dollar_3.redraw();
+			ret284(); 
+		elseif (stick.y()<seq10[6]) then red10_10_6.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[7])  
+		then red10_10_7.set_color(255,0,0); 
+			dollar_2.set_caption("$7"); dollar_2.redraw(); 
+			dollar_3.set_caption("$3"); dollar_3.redraw();
+			ret314(); 
+		elseif (stick.y()<seq10[7]) then red10_10_7.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[8])  
+		then red10_10_8.set_color(255,0,0); 
+			dollar_2.set_caption("$8"); dollar_2.redraw(); 
+			dollar_3.set_caption("$2"); dollar_3.redraw();
+			ret344(); 
+		elseif (stick.y()<seq10[8]) then red10_10_8.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[9])  
+		then red10_10_9.set_color(255,0,0); 
+			dollar_2.set_caption("$9"); dollar_2.redraw(); 
+			dollar_3.set_caption("$1"); dollar_3.redraw();
+			ret374(); 
+		elseif (stick.y()<seq10[9]) then red10_10_9.set_color(0,0,0);
+		end;
+		if (stick.y()>seq10[10])  
+		then red10_10_10.set_color(255,0,0); 
+			dollar_2.set_caption("$10"); dollar_2.redraw(); 
+			dollar_3.set_caption("$0"); dollar_3.redraw();
+			ret404(); 
+		elseif (stick.y()<seq10[10]) then red10_10_10.set_color(0,0,0);
+		end;
+		dollar_10.set_caption("$10"); dollar_10.redraw();
+		codes10.present();
+	end;
+end;
+
+sub string show
+	begin string cap;
+	stimulus_data last = stimulus_manager.last_stimulus_data();
+	cap = last.event_code();
+	return cap
+end;
+
+sub showing
+	begin 
+	texting.set_caption(show());
+	texting.redraw();
+end;
+	
